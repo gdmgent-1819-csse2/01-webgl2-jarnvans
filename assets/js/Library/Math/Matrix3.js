@@ -1,10 +1,10 @@
-/** Class representing a 3×3 matrix. */
+/** Class representing originalMatrix 3×3 matrix. */
 export default class Matrix3
 {
   /**
-   * Create a 3x3 matrix
+   * Create originalMatrix 3x3 matrix
    * 
-   * @param {Array} b - The matrix items 
+   * @param {Array} secondMatrix - The matrix items 
    */
   constructor(items){
     this.items = items || [
@@ -17,52 +17,52 @@ export default class Matrix3
   /**
    * Addition of the second matrix to the current matrix
    * 
-   * @param {Array} b - Second matrix
+   * @param {Array} secondMatrix - Second matrix
    */
-  add(b)
+  add(secondMatrix)
   {
-    const a = this.items
+    const originalMatrix = this.items
     this.items = [
-      a[0] + b[0], a[1] + b[1], a[2] + b[2],
-      a[3] + b[3], a[4] + b[4], a[5] + b[5],
-      a[6] + b[6], a[7] + b[7], a[8] + b[8],
+      originalMatrix[0] + secondMatrix[0], originalMatrix[1] + secondMatrix[1], originalMatrix[2] + secondMatrix[2],
+      originalMatrix[3] + secondMatrix[3], originalMatrix[4] + secondMatrix[4], originalMatrix[5] + secondMatrix[5],
+      originalMatrix[6] + secondMatrix[6], originalMatrix[7] + secondMatrix[7], originalMatrix[8] + secondMatrix[8],
     ]
   }
 
   /**
-   * Subtract matrices
+   * Subtraction of the second matrix from the current matrix
    * 
-   * @param {Matrix3} b
+   * @param {Matrix3} secondMatrix
    */
-  sub(b)
+  sub(secondMatrix)
   {
-    const a = this.items
+    const originalMatrix = this.items
     this.items = [
-      a[0] - b[0], a[1] - b[1], a[2] - b[2],
-      a[3] - b[3], a[4] - b[4], a[5] - b[5],
-      a[6] - b[6], a[7] - b[7], a[8] - b[8],
+      originalMatrix[0] - secondMatrix[0], originalMatrix[1] - secondMatrix[1], originalMatrix[2] - secondMatrix[2],
+      originalMatrix[3] - secondMatrix[3], originalMatrix[4] - secondMatrix[4], originalMatrix[5] - secondMatrix[5],
+      originalMatrix[6] - secondMatrix[6], originalMatrix[7] - secondMatrix[7], originalMatrix[8] - secondMatrix[8],
     ]
   }
   /**
-   * Multiply matrices
+   * Multiplication of the current matrix by the second matrix
    * 
-   * @param {Matrix3} b
+   * @param {Matrix3} secondMatrix
    */
-  mul(b)
+  mul(secondMatrix)
   {
-    const a = this.items
-    const c = []
-    c[0] = a[0] * b[0] + a[1] * b[3] + a[2] * b[6]
-    c[1] = a[0] * b[1] + a[1] * b[4] + a[2] * b[7]
-    c[2] = a[0] * b[2] + a[1] * b[5] + a[2] * b[8]
-    c[3] = a[3] * b[0] + a[4] * b[3] + a[5] * b[6]
-    c[4] = a[3] * b[1] + a[4] * b[4] + a[5] * b[7]
-    c[5] = a[3] * b[2] + a[4] * b[5] + a[5] * b[8]
-    c[6] = a[6] * b[0] + a[7] * b[3] + a[8] * b[6]
-    c[7] = a[6] * b[1] + a[7] * b[4] + a[8] * b[7]
-    c[8] = a[6] * b[2] + a[7] * b[5] + a[8] * b[8]
+    const originalMatrix = this.items
+    const productMatrix = []
+    productMatrix[0] = originalMatrix[0] * secondMatrix[0] + originalMatrix[1] * secondMatrix[3] + originalMatrix[2] * secondMatrix[6]
+    productMatrix[1] = originalMatrix[0] * secondMatrix[1] + originalMatrix[1] * secondMatrix[4] + originalMatrix[2] * secondMatrix[7]
+    productMatrix[2] = originalMatrix[0] * secondMatrix[2] + originalMatrix[1] * secondMatrix[5] + originalMatrix[2] * secondMatrix[8]
+    productMatrix[3] = originalMatrix[3] * secondMatrix[0] + originalMatrix[4] * secondMatrix[3] + originalMatrix[5] * secondMatrix[6]
+    productMatrix[4] = originalMatrix[3] * secondMatrix[1] + originalMatrix[4] * secondMatrix[4] + originalMatrix[5] * secondMatrix[7]
+    productMatrix[5] = originalMatrix[3] * secondMatrix[2] + originalMatrix[4] * secondMatrix[5] + originalMatrix[5] * secondMatrix[8]
+    productMatrix[6] = originalMatrix[6] * secondMatrix[0] + originalMatrix[7] * secondMatrix[3] + originalMatrix[8] * secondMatrix[6]
+    productMatrix[7] = originalMatrix[6] * secondMatrix[1] + originalMatrix[7] * secondMatrix[4] + originalMatrix[8] * secondMatrix[7]
+    productMatrix[8] = originalMatrix[6] * secondMatrix[2] + originalMatrix[7] * secondMatrix[5] + originalMatrix[8] * secondMatrix[8]
 
-    this.items = c
+    this.items = productMatrix
   }
 
   /**
@@ -73,13 +73,13 @@ export default class Matrix3
     α *= Math.PI / 180
     const cos = Math.cos(α)
     const sin = Math.sin(α)
-    const a = this.items
-    const r = [
+    const originalMatrix = this.items
+    const rotationMatrix = [
         cos, -sin, 0,
         sin, cos, 0,
         0, 0, 1
     ]
-    this.items = r
-    this.mul(a);
+    this.items = rotationMatrix
+    this.mul(originalMatrix);
   }
 }

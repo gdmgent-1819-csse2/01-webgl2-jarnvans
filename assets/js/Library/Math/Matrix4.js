@@ -9,63 +9,63 @@ export default class Matrix4
   }
 
   /**
-   * Add matrices
+   * Addition of the second matrix to the current matrix
    * 
-   * @param {Matrix4} b
+   * @param {Matrix4} secondMatrix
    */
-  add(b)
+  add(secondMatrix)
   {
-    const a = this.items
+    const originalMatrix = this.items
     this.items = [
-      a[0] + b[0], a[1] + b[1], a[2] + b[2], a[3] + b[3],
-      a[4] + b[4], a[5] + b[5], a[6] + b[6], a[7] + b[7],
-      a[8] + b[8], a[9] + b[9], a[10] + b[10], a[11] + b[11],
-      a[12] + b[12], a[13] + b[13], a[14] + b[14], a[15] + b[15],
+      originalMatrix[0] + secondMatrix[0], originalMatrix[1] + secondMatrix[1], originalMatrix[2] + secondMatrix[2], originalMatrix[3] + secondMatrix[3],
+      originalMatrix[4] + secondMatrix[4], originalMatrix[5] + secondMatrix[5], originalMatrix[6] + secondMatrix[6], originalMatrix[7] + secondMatrix[7],
+      originalMatrix[8] + secondMatrix[8], originalMatrix[9] + secondMatrix[9], originalMatrix[10] + secondMatrix[10], originalMatrix[11] + secondMatrix[11],
+      originalMatrix[12] + secondMatrix[12], originalMatrix[13] + secondMatrix[13], originalMatrix[14] + secondMatrix[14], originalMatrix[15] + secondMatrix[15],
     ]
   }
 
   /**
-   * Subtract matrices
+   * Subtraction of the second matrix from the current matrix
    * 
-   * @param {Matrix4} b
+   * @param {Matrix4} secondMatrix
    */
-  sub(b)
+  sub(secondMatrix)
   {
-    const a = this.items
+    const originalMatrix = this.items
     this.items = [
-      a[0] - b[0], a[1] - b[1], a[2] - b[2], a[3] - b[3],
-      a[4] - b[4], a[5] - b[5], a[6] - b[6], a[7] - b[7],
-      a[8] - b[8], a[9] - b[9], a[10] - b[10], a[11] - b[11],
-      a[12] - b[12], a[13] - b[13], a[14] - b[14], a[15] - b[15],
+      originalMatrix[0] - secondMatrix[0], originalMatrix[1] - secondMatrix[1], originalMatrix[2] - secondMatrix[2], originalMatrix[3] - secondMatrix[3],
+      originalMatrix[4] - secondMatrix[4], originalMatrix[5] - secondMatrix[5], originalMatrix[6] - secondMatrix[6], originalMatrix[7] - secondMatrix[7],
+      originalMatrix[8] - secondMatrix[8], originalMatrix[9] - secondMatrix[9], originalMatrix[10] - secondMatrix[10], originalMatrix[11] - secondMatrix[11],
+      originalMatrix[12] - secondMatrix[12], originalMatrix[13] - secondMatrix[13], originalMatrix[14] - secondMatrix[14], originalMatrix[15] - secondMatrix[15],
     ]
   }
   /**
-   * Multiply matrices
+   * Multiplication of the current matrix by the second matrix
    * 
-   * @param {Matrix4} b
+   * @param {Matrix4} secondMatrix
    */
-  mul(b)
+  mul(secondMatrix)
   {
-    const a = this.items
-    const c = []
-    c[0] = a[0] * b[0] + a[1] * b[4] + a[2] * b[8] + a[3] * b[12]
-    c[1] = a[0] * b[1] + a[1] * b[5] + a[2] * b[9] + a[3] * b[13]
-    c[2] = a[0] * b[2] + a[1] * b[6] + a[2] * b[10] + a[3] * b[14]
-    c[3] = a[0] * b[3] + a[1] * b[7] + a[2] * b[11] + a[3] * b[15]
-    c[4] = a[4] * b[0] + a[5] * b[4] + a[6] * b[8] + a[7] * b[12]
-    c[5] = a[4] * b[1] + a[5] * b[5] + a[6] * b[9] + a[7] * b[13]
-    c[6] = a[4] * b[2] + a[5] * b[6] + a[6] * b[10] + a[7] * b[14]
-    c[7] = a[4] * b[3] + a[5] * b[7] + a[6] * b[11] + a[7] * b[15]
-    c[8] = a[8] * b[0] + a[9] * b[4] + a[10] * b[8] + a[11] * b[12]
-    c[9] = a[8] * b[1] + a[9] * b[5] + a[10] * b[9] + a[11] * b[13]
-    c[10] = a[8] * b[2] + a[9] * b[6] + a[10] * b[10] + a[11] * b[14]
-    c[11] = a[8] * b[3] + a[9] * b[7] + a[10] * b[11] + a[11] * b[15]
-    c[12] = a[12] * b[0] + a[13] * b[4] + a[14] * b[8] + a[15] * b[12]
-    c[13] = a[12] * b[1] + a[13] * b[5] + a[14] * b[9] + a[15] * b[13]
-    c[14] = a[12] * b[2] + a[13] * b[6] + a[14] * b[10] + a[15] * b[14]
-    c[15] = a[12] * b[3] + a[13] * b[7] + a[14] * b[11] + a[15] * b[15]
+    const originalMatrix = this.items
+    const productMatrix = []
+    productMatrix[0] = originalMatrix[0] * secondMatrix[0] + originalMatrix[1] * secondMatrix[4] + originalMatrix[2] * secondMatrix[8] + originalMatrix[3] * secondMatrix[12]
+    productMatrix[1] = originalMatrix[0] * secondMatrix[1] + originalMatrix[1] * secondMatrix[5] + originalMatrix[2] * secondMatrix[9] + originalMatrix[3] * secondMatrix[13]
+    productMatrix[2] = originalMatrix[0] * secondMatrix[2] + originalMatrix[1] * secondMatrix[6] + originalMatrix[2] * secondMatrix[10] + originalMatrix[3] * secondMatrix[14]
+    productMatrix[3] = originalMatrix[0] * secondMatrix[3] + originalMatrix[1] * secondMatrix[7] + originalMatrix[2] * secondMatrix[11] + originalMatrix[3] * secondMatrix[15]
+    productMatrix[4] = originalMatrix[4] * secondMatrix[0] + originalMatrix[5] * secondMatrix[4] + originalMatrix[6] * secondMatrix[8] + originalMatrix[7] * secondMatrix[12]
+    productMatrix[5] = originalMatrix[4] * secondMatrix[1] + originalMatrix[5] * secondMatrix[5] + originalMatrix[6] * secondMatrix[9] + originalMatrix[7] * secondMatrix[13]
+    productMatrix[6] = originalMatrix[4] * secondMatrix[2] + originalMatrix[5] * secondMatrix[6] + originalMatrix[6] * secondMatrix[10] + originalMatrix[7] * secondMatrix[14]
+    productMatrix[7] = originalMatrix[4] * secondMatrix[3] + originalMatrix[5] * secondMatrix[7] + originalMatrix[6] * secondMatrix[11] + originalMatrix[7] * secondMatrix[15]
+    productMatrix[8] = originalMatrix[8] * secondMatrix[0] + originalMatrix[9] * secondMatrix[4] + originalMatrix[10] * secondMatrix[8] + originalMatrix[11] * secondMatrix[12]
+    productMatrix[9] = originalMatrix[8] * secondMatrix[1] + originalMatrix[9] * secondMatrix[5] + originalMatrix[10] * secondMatrix[9] + originalMatrix[11] * secondMatrix[13]
+    productMatrix[10] = originalMatrix[8] * secondMatrix[2] + originalMatrix[9] * secondMatrix[6] + originalMatrix[10] * secondMatrix[10] + originalMatrix[11] * secondMatrix[14]
+    productMatrix[11] = originalMatrix[8] * secondMatrix[3] + originalMatrix[9] * secondMatrix[7] + originalMatrix[10] * secondMatrix[11] + originalMatrix[11] * secondMatrix[15]
+    productMatrix[12] = originalMatrix[12] * secondMatrix[0] + originalMatrix[13] * secondMatrix[4] + originalMatrix[14] * secondMatrix[8] + originalMatrix[15] * secondMatrix[12]
+    productMatrix[13] = originalMatrix[12] * secondMatrix[1] + originalMatrix[13] * secondMatrix[5] + originalMatrix[14] * secondMatrix[9] + originalMatrix[15] * secondMatrix[13]
+    productMatrix[14] = originalMatrix[12] * secondMatrix[2] + originalMatrix[13] * secondMatrix[6] + originalMatrix[14] * secondMatrix[10] + originalMatrix[15] * secondMatrix[14]
+    productMatrix[15] = originalMatrix[12] * secondMatrix[3] + originalMatrix[13] * secondMatrix[7] + originalMatrix[14] * secondMatrix[11] + originalMatrix[15] * secondMatrix[15]
     
-    this.items = c
+    this.items = productMatrix
   }
 
   /**
@@ -76,14 +76,14 @@ export default class Matrix4
     α *= Math.PI / 180
     const cos = Math.cos(α)
     const sin = Math.sin(α)
-    const a = this.items
-    const r = [
+    const originalMatrix = this.items
+    const rotationMatrix = [
       1, 0, 0, 0,
       0, cos, -sin, 0,
       0, sin, cos, 0,
       0, 0, 0, 1
     ]
-    this.items = r
-    this.mul(a);
+    this.items = rotationMatrix
+    this.mul(originalMatrix);
   }
 }

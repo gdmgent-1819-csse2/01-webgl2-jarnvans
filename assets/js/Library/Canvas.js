@@ -2,6 +2,14 @@ import Vector2 from './Math/Vector2.js'
 
 /** Class representing a canvas element for WebGL2 */
 export default class Canvas {
+
+    /**
+     * 
+     * @param {Number} width 
+     * @param {Number} height 
+     * @param {*} shaderSources 
+     */
+
     constructor(width, height, shaderSources) {
         this.width = width
         this.height = height
@@ -36,6 +44,12 @@ export default class Canvas {
 
     }
 
+    /**
+     * Method that updates canvas
+     * 
+     * @param {*} event 
+     */
+
     updateCanvasHandler(event) {
         console.log('updateCanvas')
         this.clearData()
@@ -53,14 +67,6 @@ export default class Canvas {
             this.data.positions.push(v.x, v.y)
             this.data.colors.push(...this.colors.white)
         } 
-
-        const colors = [
-            'green',
-            'blue',
-            'cyan',
-            'magenta',
-            'yellow',
-        ]
 
         const date = new Date()
 
@@ -81,17 +87,12 @@ export default class Canvas {
         this.data.positions.push(hoursVector.x, hoursVector.y)
         this.data.colors.push(...this.colors.green)
 
-
-
-
-        // colors.forEach(color => {
-        //     v.rot(45)
-        //     this.data.positions.push(v.x, v.y)
-        //     this.data.colors.push(...this.colors[color])
-        // });
-
         this.drawScene()
     }
+
+    /**
+     * Method that shows everything on the canvas
+     */
 
     run() {
         try {
@@ -117,6 +118,10 @@ export default class Canvas {
         }
     }
 
+    /**
+     * Method that clears data.
+     */
+
     clearData() {
         this.data = {
             colors: [],
@@ -124,10 +129,19 @@ export default class Canvas {
         }
     }
 
+    /**
+     * Creating buffers
+     */
+
     createBuffers() {
         this.createBuffer('COLOR')
         this.createBuffer('POSITION')
     }
+
+    /**
+     * Creates buffer of certain type.
+     * @param {String} bufferType 
+     */
 
     createBuffer(bufferType) {
         const gl = this.gl
@@ -169,6 +183,10 @@ export default class Canvas {
         gl.vertexAttribPointer(index, size, type, normalized, stride, offset) // @see https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/vertexAttribPointer
     }
 
+    /**
+     * Method that creates canvas
+     */
+
     createCanvas() {
         const canvas = document.createElement('canvas')
         document.body.appendChild(canvas)
@@ -178,6 +196,10 @@ export default class Canvas {
         gl.clearColor(0, 0, 0, 0) // @see https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/clearColor
         gl.viewport(0, 0, gl.canvas.width, gl.canvas.height) // @see https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/viewport
     }
+
+    /**
+     * Method that creates program
+     */
 
     createProgram() {
         const gl = this.gl
@@ -197,12 +219,21 @@ export default class Canvas {
         }
     }
 
+    /**
+     * Method that creates shaders
+     */
+
     createShaders() {
         const gl = this.gl
 
         this.vertexShader = this.createShader(gl.VERTEX_SHADER)
         this.fragmentShader = this.createShader(gl.FRAGMENT_SHADER)
     }
+
+    /**
+     * Method that creates certain shader
+     * @param {*} type 
+     */
 
     createShader(type) {
         const gl = this.gl
@@ -232,12 +263,20 @@ export default class Canvas {
         gl.deleteShader(shader)
     }
 
+    /**
+     * Method that creates vertex
+     */
+
     createVertexArray() {
         const gl = this.gl
 
         const vertexArray = gl.createVertexArray()
         gl.bindVertexArray(vertexArray)
     }
+
+    /**
+     * Method that draw scene
+     */
 
     drawScene() {
         const gl = this.gl
